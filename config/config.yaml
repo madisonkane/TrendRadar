@@ -30,22 +30,48 @@ platforms:
     name: "百度热搜"
   - id: "wallstreetcn-hot"
     name: "华尔街见闻"
-  - id: "thepaper"
-    name: "澎湃新闻"
   - id: "bilibili-hot-search"
     name: "bilibili 热搜"
   - id: "cls-hot"
     name: "财联社热门"
   - id: "ifeng"
     name: "凤凰网"
-  - id: "tieba"
-    name: "贴吧"
   - id: "weibo"
     name: "微博"
   - id: "douyin"
     name: "抖音"
-  - id: "zhihu"
-    name: "知乎"
+  - id: "kaopu"
+    name: "靠谱新闻"
+  - id: "sputniknewscn"
+    name: "卫星通讯社"
+  - id: "zaobao"
+    name: "联合早报"
+  - id: "jin10"
+    name: "金十数据"
+  - id: "fastbull"
+    name: "快讯通"
+  - id: "ithome"
+    name: "IT之家"
+  - id: "juejin"
+    name: "掘金"
+  - id: "github"
+    name: "GitHub"
+  - id: "hackernews"
+    name: "Hacker News"
+  - id: "solidot"
+    name: "Solidot"
+  - id: "v2ex"
+    name: "V2EX"
+  - id: "nowcoder"
+    name: "牛客网"
+  - id: "pcbeta"
+    name: "远景论坛"
+  - id: "sspai"
+    name: "少数派"
+  - id: "tencent-hot"
+    name: "腾讯新闻 综合早报"
+  - id: "chongbuluo"
+    name: "虫部落"
 
 
 # ===============================================================
@@ -122,14 +148,14 @@ rss:
 #    • 适用场景：避免重复信息干扰
 # ===============================================================
 report:
-  mode: "current"                     # 可选: daily | current | incremental
+  mode: "incremental"                     # 可选: daily | current | incremental
   display_mode: "keyword"             # 可选: keyword | platform
                                       # keyword: 按关键词分组显示（默认）
                                       # platform: 按平台/来源分组显示
   rank_threshold: 5                   # 排名高亮阈值
   sort_by_position_first: false       # true=按配置位置排序，false=按热点条数排序
   max_news_per_keyword: 0             # 每个关键词最大显示数量（0=不限制）
-  reverse_content_order: false        # false=热点词汇统计在前，true=新增热点新闻在前
+  reverse_content_order: true        # false=热点词汇统计在前，true=新增热点新闻在前
 
 
 # ===============================================================
@@ -164,8 +190,8 @@ notification:
   #       如果想要精准的定时推送，建议使用 Docker 部署在个人服务器上
   push_window:
     enabled: false                    # 是否启用推送时间窗口控制
-    start: "20:00"                    # 开始时间（北京时间）
-    end: "22:00"                      # 结束时间（北京时间）
+    start: "09:00"                    # 开始时间（北京时间）
+    end: "15:00"                      # 结束时间（北京时间）
     once_per_day: true                # true=窗口内只推送一次，false=窗口内每次执行都推送
 
   # 推送渠道配置
@@ -222,7 +248,7 @@ storage:
   # 本地存储配置
   local:
     data_dir: "output"                # 数据目录
-    retention_days: 0                 # 保留天数（0=永久保留）
+    retention_days: 7                 # 保留天数（0=永久保留）
 
   # 远程存储配置（S3 兼容协议）
   # 支持: Cloudflare R2, 阿里云 OSS, 腾讯云 COS, AWS S3, MinIO 等
